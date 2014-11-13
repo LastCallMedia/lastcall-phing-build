@@ -9,8 +9,7 @@
     </target>
 
     <target name="drupal-post-deploy" depends="drupal-ensure-install,drupal-update-db, drupal-features-revert">
-        <phingcall target="drupal-update-db"/>
-        <phingcall target="drupal-features-revert"/>
+
     </target>
 
     <target name="drupal-ensure-install">
@@ -41,7 +40,6 @@
                 <drush command="features-revert-all">
                     <option name="y">true</option>
                 </drush>
-                <!--<exec command="drush features-revert-all -y" checkreturn="true" passthru="true"/>-->
             </then>
         </if>
     </target>
