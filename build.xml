@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="common" default="drupal-post-deploy">
+    <!--http://blog.riff.org/2014_02_15_tip_of_the_day_phing_composer_and_namespaced_task_classes-->
+    <taskdef name="drush" classname="lcm\lcmbuild\DrushTask" />
+
+    <target name="dummy">
+        <echo msg="This task should never be called."/>
+    </target>
+
+    <target name="drupal-post-deploy">
+        <phingcall target="drupal-update-db"/>
+        <phingcall target="drupal-features-revert"/>
+    </target>
+    <target name="drupal-features-revert">
+        <drush command="pm-info features" returnProperty="featuresStatus">
+            <option name="fields">status</option>
+            <option name="format">csv</option>
+        </drush>
+        <if>
+            <equals arg1="${featuresStatus}" arg2="enabled"/>
+            <then>
+                <echo msg="Reverting features."/>
+                <exec command="drush features-revert-all -y" checkreturn="true" passthru="true"/>
+            </then>
+        </if>
+    </target>
+    <target name="drupal-update-db">
+        <drush command="updb -y" haltOnError="true"/>
+    </target>
+</project>
