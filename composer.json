@@ -1,0 +1,15 @@
+{
+    "name": "lcm/lcmbuild",
+    "require": {
+        "phing/phing": "2.*"
+    },
+    "authors": [
+        {
+            "name": "Rob Bayliss",
+            "email": "rob@lastcallmedia.com"
+        }
+    ],
+    "autoload": {
+      "psr-0": { "lcm\\lcmbuild\\": "" }
+    }
+}
