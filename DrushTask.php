@@ -61,10 +61,18 @@ class DrushTask extends \Task {
   protected $returnGlue = "\n";
 
   /**
-   * @var string The name of a Phing property to assign the Drush command's
-   *   output to.
+   * Property name to set with return value from exec call.
+   *
+   * @var string
    */
-  protected $returnProperty = NULL;
+  protected $returnProperty;
+
+  /**
+   * Property name to set with output value from exec call.
+   *
+   * @var string
+   */
+  protected $outputProperty;
 
   /**
    * @var bool Display extra information avout the command.
@@ -101,6 +109,12 @@ class DrushTask extends \Task {
    * @var PhingFile Working directory.
    */
   protected $dir;
+
+  /**
+   * Whether to log returned output as MSG_INFO instead of MSG_VERBOSE
+   * @var boolean
+   */
+  protected $logOutput = false;
 
   /**
    * The Drush command to run.
@@ -396,16 +410,21 @@ class DrushTask extends \Task {
     }
 
     // Collect Drush output for display through Phing's log.
+    $outloglevel = $this->logOutput ? \Project::MSG_INFO : \Project::MSG_VERBOSE;
     foreach ($output as $line) {
-      $this->log($line);
+      $this->log($line, $outloglevel);
     }
     // Set value of the 'pipe' property.
     if (!empty($this->returnProperty)) {
-      $this->getProject()->setProperty($this->returnProperty, implode($this->returnGlue, $output));
+      $this->getProject()->setProperty($this->returnProperty, $return);
+    }
+    // Set value of the 'pipe' property.
+    if (!empty($this->outputProperty)) {
+      $this->getProject()->setProperty($this->outputProperty, implode($this->returnGlue, $output));
     }
     // Build fail.
     if ($this->haltOnError && $return != 0) {
-      throw new BuildException("Drush exited with code $return");
+      throw new \BuildException("Drush exited with code $return");
     }
     return $return != 0;
   }
