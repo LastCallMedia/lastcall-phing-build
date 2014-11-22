@@ -1,6 +1,6 @@
 <?php
 
-namespace lcm\lcmbuild;
+namespace lastcall\Phing\Drush;
 
 /**
  * A Drush CLI option.

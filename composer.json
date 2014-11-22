@@ -1,5 +1,5 @@
 {
-    "name": "lcm/Phing",
+    "name": "lastcall/Phing",
     "description": "Phing customizations for Last Call Media",
     "require": {
         "phing/phing": "2.*"
@@ -11,6 +11,6 @@
         }
     ],
     "autoload": {
-      "psr-4": { "lcm\\Phing\\": "" }
+      "psr-4": { "lastcall\\Phing\\": "" }
     }
 }

@@ -2,7 +2,7 @@
 
 <project name="common" default="drupal-post-deploy">
     <!--http://blog.riff.org/2014_02_15_tip_of_the_day_phing_composer_and_namespaced_task_classes-->
-    <taskdef name="drush" classname="lcm\Phing\Drush\DrushTask" />
+    <taskdef name="drush" classname="lastcall\Phing\Drush\DrushTask" />
 
     <target name="dummy">
         <echo msg="This task should never be called."/>
