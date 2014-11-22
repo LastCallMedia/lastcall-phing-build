@@ -30,11 +30,6 @@ class BehatTask extends \Task {
   private $profile;
 
   /**
-   * @var string The base URL to use.
-   */
-  private $base_url;
-
-  /**
    * @var bool  Whether to add the --no-colors option.
    */
   private $nocolors;
@@ -43,6 +38,11 @@ class BehatTask extends \Task {
    * @var bool Whether to print output.
    */
   private $passthru = TRUE;
+
+  /**
+   * @var \PhingFile The name of the file to return output of the command to.
+   */
+  private $output;
 
   /**
    * @var string  Definitions to print out.
@@ -75,16 +75,16 @@ class BehatTask extends \Task {
     $this->profile = $profile;
   }
 
-  public function setBase_Url($base_url) {
-    $this->base_url = $base_url;
-  }
-
   public function setNocolors($nocolors) {
     $this->nocolors = (bool) $nocolors;
   }
 
   public function setPassthru($passthru) {
     $this->passthru = (bool) $passthru;
+  }
+
+  public function setOutput(\PhingFile $file) {
+    $this->output = $file;
   }
 
   public function setDefinitions($definitions) {
@@ -127,12 +127,12 @@ class BehatTask extends \Task {
         ->setValue('--profile=' . $this->profile);
     }
 
-    if($this->base_url) {
-//      $exec->setOwningTarget();
-    }
-
     if($this->definitions) {
       $exec->createArg()->setValue('--definitions=' . $this->definitions);
+    }
+
+    if($this->output) {
+      $exec->setOutput($this->output);
     }
 
     if($this->nocolors) {
