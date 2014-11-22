@@ -1,5 +1,6 @@
 {
     "name": "lcm/Phing",
+    "description": "Phing customizations for Last Call Media",
     "require": {
         "phing/phing": "2.*"
     },
