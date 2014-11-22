@@ -2,7 +2,7 @@
 
 <project name="common" default="drupal-post-deploy">
     <!--http://blog.riff.org/2014_02_15_tip_of_the_day_phing_composer_and_namespaced_task_classes-->
-    <taskdef name="drush" classname="lcm\lcmbuild\DrushTask" />
+    <taskdef name="drush" classname="lcm\Phing\Drush\DrushTask" />
 
     <target name="dummy">
         <echo msg="This task should never be called."/>
@@ -45,5 +45,12 @@
     </target>
     <target name="drupal-update-db">
         <drush command="updb -y" haltOnError="true"/>
+    </target>
+
+    <target name="app-behat-test">
+        <exec executable="bin/behat" checkreturn="true" passthru="true">
+            <arg value="-config-file ${behat.config}"></arg>
+            <arg value="--format='${behat.format}'"></arg>
+        </exec>
     </target>
 </project>

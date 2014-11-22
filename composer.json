@@ -1,5 +1,5 @@
 {
-    "name": "lcm/lcmbuild",
+    "name": "lcm/Phing",
     "require": {
         "phing/phing": "2.*"
     },
@@ -10,6 +10,6 @@
         }
     ],
     "autoload": {
-      "psr-4": { "lcm\\lcmbuild\\": "" }
+      "psr-4": { "lcm\\Phing\\": "" }
     }
 }
