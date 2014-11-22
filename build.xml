@@ -3,6 +3,25 @@
 <project name="common" default="drupal-post-deploy">
     <!--http://blog.riff.org/2014_02_15_tip_of_the_day_phing_composer_and_namespaced_task_classes-->
     <taskdef name="drush" classname="lastcall\Phing\Drush\DrushTask" />
+    <taskdef name="behat" classname="lastcall\Phing\Behat\BehatTask" />
+
+    <!--Note: PHPStorm doesn't recognize the tasks above, so uncomment the definitions below when doing development.-->
+    <!--<taskdef name="drush" classname="Stubs.DrushTask"/>-->
+    <!--<taskdef name="behat" classname="Stubs.BehatTask" />-->
+
+    <tstamp>
+        <format pattern="%Y-%m-%d-%H%M-%S" property="build.time"/>
+    </tstamp>
+    <property name="build.id" value="${build.time}" />
+    <property name="build.reportsdir" value="./reports/${build.time}"/>
+    <property name="behat.executable" value="./bin/behat"/>
+    <property name="behat.config" value=""/>
+    <property name="behat.format" value=""/>
+    <property name="behat.out" value="${build.reportsdir}/behat.log"/>
+    <property name="behat.base_url" value=""/>
+
+
+
 
     <target name="dummy">
         <echo msg="This task should never be called."/>
@@ -47,10 +66,14 @@
         <drush command="updb -y" haltOnError="true"/>
     </target>
 
-    <target name="app-behat-test">
-        <exec executable="bin/behat" checkreturn="true" passthru="true">
-            <arg value="-config-file ${behat.config}"></arg>
-            <arg value="--format='${behat.format}'"></arg>
-        </exec>
+    <target name="app-prepare-reports">
+        <mkdir dir="${build.reportsdir}"/>
     </target>
+    <target name="app-behat-test" depends="app-prepare-reports">
+        <behat executable="${behat.executable}" config="${behat.config}" format="${behat.format}" out="${behat.out}" base_url="${behat.base_url}"></behat>
+    </target>
+
+
+
+
 </project>
