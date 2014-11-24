@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="common" default="dummy">
+    <taskdef name="drush" classname="Stubs.DrushTask" classpath="${phing.dir.common}"/>
+    <taskdef name="behat" classname="Stubs.BehatTask" classpath="${phing.dir.common}"/>
+
+    <tstamp>
+        <format pattern="%Y-%m-%d-%H%M-%S" property="build.time"/>
+    </tstamp>
+
+    <target name="dummy">
+        <echo msg="This task should never be called."/>
+    </target>
+
+    <target name="drupal-ensure-install">
+        <drush command="sql-query" returnProperty="tableStatus" haltOnError="false">
+            <param>"SHOW TABLES"</param>
+        </drush>
+        <if>
+            <not>
+                <equals arg1="${tableStatus}" arg2="0"></equals>
+            </not>
+            <then>
+                <echo msg="Site is not installed.  Installing."/>
+                <drush command="site-install">
+                    <option name="y"></option>
+                </drush>
+            </then>
+        </if>
+    </target>
+</project>

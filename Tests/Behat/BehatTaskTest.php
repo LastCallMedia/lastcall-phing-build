@@ -1,8 +1,7 @@
 <?php
 
-namespace lastcall\Phing\Tests;
+namespace lastcall\Phing\Tests\Behat;
 
-use lastcall\Phing\Behat\BehatTask;
 
 class BehatTaskTest extends \BuildFileTest {
 
