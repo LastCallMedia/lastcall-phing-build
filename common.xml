@@ -4,6 +4,7 @@
     <taskdef name="drush" classname="Stubs.DrushTask" classpath="${phing.dir.common}"/>
     <taskdef name="behat" classname="Stubs.BehatTask" classpath="${phing.dir.common}"/>
 
+    <property name="project.dir.behat" value="${project.basedir}/../sites/all/behat"/>
     <tstamp>
         <format pattern="%Y-%m-%d-%H%M-%S" property="build.time"/>
     </tstamp>
@@ -27,5 +28,15 @@
                 </drush>
             </then>
         </if>
+    </target>
+
+    <target name="drupal-setup-behat">
+        <mkdir dir="${project.dir.behat}"/>
+        <mkdir dir="${project.dir.behat}/features"/>
+        <mkdir dir="${project.dir.behat}/bootstrap"/>
+        <copy file="${phing.dir.common}/Resources/sample.behat.yml" tofile="${project.dir.behat}/behat.yml"/>
+        <copy file="${phing.dir.common}/Resources/sample.behat.local.yml" tofile="${project.dir.behat}/behat.local.yml"/>
+        <copy file="${phing.dir.common}/Resources/sample.FeatureContext.php" tofile="${project.dir.behat}/bootstrap/FeatureContext.php"/>
+        <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
     </target>
 </project>
