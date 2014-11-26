@@ -1,0 +1,12 @@
+# This is a local behat.yml file.
+# It should be used to specify anything that is
+# specific to this environment (ex: base_url).
+# Example included below:
+#
+#default:
+#  extensions:
+#    Behat\MinkExtension:
+#      base_url: 'http://localhost/rfa'
+#    Drupal\DrupalExtension:
+#      drush:
+#        alias: self

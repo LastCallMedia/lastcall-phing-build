@@ -11,7 +11,7 @@ class BehatTaskTest extends \BuildFileTest {
   protected $project;
 
   protected function setUp() {
-    $this->configureProject(__DIR__ . '/Resources/build.xml');
+    $this->configureProject(__DIR__ . '/../Resources/build.xml');
   }
 
   public function testExecutable() {
@@ -23,7 +23,7 @@ class BehatTaskTest extends \BuildFileTest {
   }
 
   public function testConfig() {
-    $expected = realpath(__DIR__ . '/Resources/behat.yml');
+    $expected = realpath(__DIR__ . '/../Resources/behat.yml');
     $this->assertEquals('bin/behat --config ' . $expected, $this->getCommandExecutedByTarget(__FUNCTION__));
   }
 
