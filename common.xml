@@ -23,14 +23,12 @@
             </not>
             <then>
                 <echo msg="Site is not installed.  Installing."/>
-                <drush command="site-install">
-                    <option name="y"></option>
-                </drush>
+                <drush command="site-install -y" />
             </then>
         </if>
     </target>
 
-    <target name="drupal-setup-behat">
+    <target name="setup-behat">
         <mkdir dir="${project.dir.behat}"/>
         <mkdir dir="${project.dir.behat}/features"/>
         <mkdir dir="${project.dir.behat}/bootstrap"/>
@@ -40,8 +38,7 @@
         <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
     </target>
 
-    <target name="drupal-test-behat">
-        <echo message="testing..."/>
+    <target name="test-behat">
         <behat executable="${behat.bin}" config="${project.dir.behat}/behat.yml" passthru="true" />
     </target>
 
