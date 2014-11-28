@@ -4,9 +4,10 @@ namespace lastcall\Phing\Tests\Behat;
 
 use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
-class BehatTaskTest extends BaseTaskTest {
+class BehatTaskGlobalTest extends BaseTaskTest {
 
-  protected $taskFile = 'behat.xml';
+  protected $taskFile = 'behat.global.xml';
+
   /**
    * @dataProvider optionTaskProvider
    */

@@ -2,64 +2,55 @@
 
 namespace lastcall\Phing\Behat;
 
-class BehatTask extends \Task {
+use lastcall\Phing\Phing\ExecWrapperTask;
+
+class BehatTask extends ExecWrapperTask {
 
   /**
    * @var string  The path to the behat executable.
    */
-  private $executable = 'behat';
+  protected $executable = 'behat';
 
   /**
-   * @var string  The behat.yml to use.
+   * @var \PhingFile  The behat.yml to use.
    */
-  private $config;
+  protected $config;
 
   /**
    * @var string  The output formatter to use.
    */
-  private $format;
+  protected $format;
 
   /**
    * @var string  The output file to use.
    */
-  private $out;
+  protected $out;
 
   /**
    * @var string The profile to use.
    */
-  private $profile;
+  protected $profile;
 
   /**
    * @var bool  Whether to add the --no-colors option.
    */
-  private $nocolors;
-
-  /**
-   * @var bool Whether to print output.
-   */
-  private $passthru = TRUE;
-
-  /**
-   * @var \PhingFile The name of the file to return output of the command to.
-   */
-  private $output;
+  protected $nocolors;
 
   /**
    * @var string  Definitions to print out.
    */
-  private $definitions;
+  protected $definitions;
 
-  public function main() {
-    $exec = $this->getExecTask();
-
-    return $exec->main();
+  public function init() {
+    if($executable = $this->getProject()->getProperty('behat.executable')) {
+      $this->setExecutable($executable);
+    }
+    if($config = $this->getProject()->getProperty('behat.config')) {
+      $this->setConfig(new \PhingFile($config));
+    }
   }
 
-  public function setExecutable($executable) {
-    $this->executable = $executable;
-  }
-
-  public function setConfig($config) {
+  public function setConfig(\PhingFile $config) {
     $this->config = $config;
   }
 
@@ -79,10 +70,6 @@ class BehatTask extends \Task {
     $this->nocolors = (bool) $nocolors;
   }
 
-  public function setPassthru($passthru) {
-    $this->passthru = (bool) $passthru;
-  }
-
   public function setOutput(\PhingFile $file) {
     $this->output = $file;
   }
@@ -91,42 +78,30 @@ class BehatTask extends \Task {
     $this->definitions = $definitions;
   }
 
-  /**
-   * @return \ExecTask
-   */
-  public function getExecTask() {
-    $exec = new \ExecTask();
-    $exec->setProject($this->getProject());
-    $exec->init();
 
-    $executable = $this->executable;
-    $exec->setExecutable($executable);
-    $exec->setPassthru($this->passthru);
-    $exec->setCheckreturn(TRUE);
-
+  protected function configureExecTask(\ExecTask $exec) {
     if($this->config) {
       $arg = $exec->createArg();
       $arg->setValue('--config');
       $arg = $exec->createArg();
-      $arg->setFile(new \PhingFile($this->config));
+      $arg->setFile($this->config);
     }
-
     if($this->format) {
       $arg = $exec->createArg();
       $arg->setValue('--format=' . $this->format);
     }
-
     if($this->out) {
       $exec->createArg()
         ->setValue('--out=' . $this->out);
       $this->nocolors = TRUE;
     }
-
     if($this->profile) {
       $exec->createArg()
         ->setValue('--profile=' . $this->profile);
     }
-
+    if($this->definitions) {
+      $exec->createArg()->setValue('--definitions=' . $this->definitions);
+    }
     if($this->definitions) {
       $exec->createArg()->setValue('--definitions=' . $this->definitions);
     }
@@ -138,8 +113,6 @@ class BehatTask extends \Task {
     if($this->nocolors) {
       $exec->createArg()->setValue('--no-colors');
     }
-
     return $exec;
   }
-
 }

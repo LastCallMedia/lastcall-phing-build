@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="lcm-phing-drush-global-tests" default="testGlobal">
+    <taskdef name="drush" classname="lastcall\Phing\Drush\DrushTask" />
+    <property name="drush.alias" value="globalalias"/>
+    <property name="drush.executable" value="globalexecutable"/>
+    <property name="drush.uri" value="globaluri"/>
+    <property name="drush.root" value="globalroot"/>
+
+    <target name="testGlobal" description="globalexecutable @globalalias --root=globalroot --uri=globaluri 2>&amp;1">
+        <drush/>
+    </target>
+
+    <target name="testOverride" description="localexecutable @localalias --root=localroot --uri=localuri 2>&amp;1">
+        <drush alias="localalias" executable="localexecutable" root="localroot" uri="localuri" />
+    </target>
+</project>

@@ -7,11 +7,11 @@ class CommonTest extends \BuildFileTest {
 
   protected function setUp() {
     $this->configureProject(__DIR__ . '/../Resources/common-test.xml');
-    $this->executeTarget('test-setup');
+    $this->executeTarget('test:setup');
   }
 
   protected function tearDown() {
-    $this->executeTarget('test-teardown');
+    $this->executeTarget('test:teardown');
   }
 
   public function testBehatSetup() {

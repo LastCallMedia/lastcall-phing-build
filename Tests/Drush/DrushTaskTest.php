@@ -1,12 +1,12 @@
 <?php
 
-namespace lastcall\Phing\Tests\Behat;
+namespace lastcall\Phing\Tests\Drush;
 
 use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
-class BehatTaskTest extends BaseTaskTest {
+class DrushTaskTest extends BaseTaskTest {
+  protected $taskFile = 'drush.xml';
 
-  protected $taskFile = 'behat.xml';
   /**
    * @dataProvider optionTaskProvider
    */
