@@ -4,10 +4,10 @@
     <import file="../../common.xml"/>
     <property name="project.dir.behat" value="${phing.dir.common_test}/tmp"/>
 
-    <target name="test-setup">
+    <target name="test:setup">
         <mkdir dir="${project.dir.behat}"/>
     </target>
-    <target name="test-teardown">
+    <target name="test:teardown">
         <delete dir="${project.dir.behat}"/>
     </target>
 </project>

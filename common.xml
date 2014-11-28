@@ -28,7 +28,7 @@
         </if>
     </target>
 
-    <target name="setup-behat">
+    <target name="setup:behat">
         <mkdir dir="${project.dir.behat}"/>
         <mkdir dir="${project.dir.behat}/features"/>
         <mkdir dir="${project.dir.behat}/bootstrap"/>
@@ -38,7 +38,7 @@
         <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
     </target>
 
-    <target name="test-behat">
+    <target name="test:behat">
         <behat executable="${behat.bin}" config="${project.dir.behat}/behat.yml" passthru="true" />
     </target>
 
