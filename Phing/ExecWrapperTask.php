@@ -24,7 +24,7 @@ abstract class ExecWrapperTask extends \Task {
 
   public function __construct() {
     $this->execTask = new \ExecTask();
-    $this->execTask->setExecutable($this->executable);
+    $this->execTask->setExecutable(new \PhingFile($this->executable));
   }
 
   public function setProject(\Project $project){
@@ -39,7 +39,6 @@ abstract class ExecWrapperTask extends \Task {
 
   public function init() {
     parent::init();
-    $this->execTask->setExecutable($this->executable);
     $this->execTask->init();
   }
 
@@ -61,7 +60,7 @@ abstract class ExecWrapperTask extends \Task {
    * @param string $executable
    */
   public function setExecutable($executable) {
-    $this->execTask->setExecutable($executable);
+    $this->execTask->setExecutable(new \PhingFile($executable));
   }
 
   /**
@@ -99,7 +98,6 @@ abstract class ExecWrapperTask extends \Task {
   }
 
   public function getExecTask() {
-//    $task = clone $this->execTask;
     return $this->configureExecTask(clone $this->execTask);
   }
 
