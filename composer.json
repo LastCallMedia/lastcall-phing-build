@@ -10,6 +10,11 @@
             "email": "rob@lastcallmedia.com"
         }
     ],
+    "suggest": {
+      "drupal/drupal-extension" : "Behat BDD extensions for Drupal",
+      "squizlabs/php_codesniffer": "Checks coding standards",
+      "drupal/coder": "Contains Code Sniffer definitions for Drupal"
+    },
     "autoload": {
       "psr-4": { "lastcall\\Phing\\": "" }
     }

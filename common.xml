@@ -9,7 +9,7 @@
         <echo msg="This task should never be called."/>
     </target>
 
-    <target name="drupal-ensure-install">
+    <target name="drupal:ensure-install">
         <drush command="sql-query" returnProperty="tableStatus" checkreturn="false">
             <arg>SHOW TABLES</arg>
         </drush>
