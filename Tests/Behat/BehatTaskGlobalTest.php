@@ -6,7 +6,9 @@ use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
 class BehatTaskGlobalTest extends BaseTaskTest {
 
-  protected $taskFile = 'behat.global.xml';
+  public function getTaskFile() {
+    return __DIR__ . '/../Resources/behat.global.xml';
+  }
 
   /**
    * @dataProvider optionTaskProvider

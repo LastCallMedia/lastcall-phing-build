@@ -7,7 +7,10 @@ use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
 class BehatTaskTest extends BaseTaskTest {
 
-  protected $taskFile = 'behat.xml';
+  public function getTaskFile() {
+    return __DIR__ . '/../Resources/behat.xml';
+  }
+
   /**
    * @dataProvider optionTaskProvider
    */

@@ -5,7 +5,10 @@ namespace lastcall\Phing\Tests\Drush;
 use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
 class DrushTaskTest extends BaseTaskTest {
-  protected $taskFile = 'drush.xml';
+
+  public function getTaskFile() {
+    return __DIR__ . '/../Resources/drush.xml';
+  }
 
   /**
    * @dataProvider optionTaskProvider

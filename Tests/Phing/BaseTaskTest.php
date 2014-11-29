@@ -17,9 +17,7 @@ abstract class BaseTaskTest extends \BuildFileTest {
     $this->configureProject($this->getTaskFile());
   }
 
-  protected function getTaskFile() {
-    return __DIR__ . '/../Resources/' . $this->taskFile;
-  }
+  abstract function getTaskFile();
 
   public function optionTaskProvider() {
     $p = new \Project();
