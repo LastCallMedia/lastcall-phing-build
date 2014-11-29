@@ -59,25 +59,28 @@
 
     <!-- WARNING: Tests below are in Beta.  They might not be helpful. -->
     <target name="test:phpcs" description="Detects code style issues and generates a report.">
-        <!-- Requires adding drupal/coder: ~7.0 to composer.json -->
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpcodesniffer standard="${phing.dir.common}/../../drupal/coder/coder_sniffer/Drupal">
             <fileset refid="custom_code"/>
         </phpcodesniffer>
     </target>
 
     <target name="test:phpmd" description="Detects common issues with code and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpmd rulesets="codesize,naming,design">
             <fileset refid="custom_code"/>
         </phpmd>
     </target>
 
     <target name="test:phploc" description="Generates overall code statistics and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phploc suffixes="php,module,inc">
             <fileset refid="custom_code"/>
         </phploc>
     </target>
 
     <target name="test:phpcpd" description="Detects duplicate code and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpcpd>
             <fileset refid="custom_code"/>
         </phpcpd>
@@ -85,10 +88,12 @@
 
     <!-- Reporting targets: -->
     <target name="test:behat:report" depends="setup:artifacts">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <behat out="${project.dir.artifacts}/behat.xml" checkreturn="true" format="pretty" nocolors="true"/>
     </target>
 
     <target name="test:phpcs:report">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpcodesniffer standard="${phing.dir.common}/../../drupal/coder/coder_sniffer/Drupal">
             <fileset refid="custom_code"/>
             <formatter type="checkstyle" usefile="true" outfile="${project.dir.artifacts}/checkstyle.xml"/>
@@ -96,6 +101,7 @@
     </target>
 
     <target name="test:phpmd:report" depends="setup:artifacts" description="Detects common issues with code and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpmd rulesets="codesize,naming,design">
             <fileset refid="custom_code"/>
             <formatter outfile="${project.dir.artifacts}/phpmd.xml" type="xml"/>
@@ -103,12 +109,14 @@
     </target>
 
     <target name="test:phploc:report" depends="setup:artifacts" description="Generates overall code statistics and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phploc suffixes="php,module,inc" reportDirectory="${project.dir.artifacts}" reportName="phploc" reportType="xml">
             <fileset refid="custom_code"/>
         </phploc>
     </target>
 
     <target name="test:phpcpd:report" depends="setup:artifacts" description="Detects duplicate code and generates a report.">
+        <warn message="This task is in beta. It probably shouldn't be used in a ci-build."/>
         <phpcpd>
             <fileset refid="custom_code"/>
             <formatter outfile="${project.dir.artifacts}/pmd-cpd.xml" type="pmd"/>
