@@ -30,4 +30,7 @@
     <target name="testNoColors" description="behat --no-colors 2>&amp;1">
         <behat nocolors="true"/>
     </target>
+    <target name="testInit" description="behat --init 2>&amp;1">
+        <behat init="true"/>
+    </target>
 </project>

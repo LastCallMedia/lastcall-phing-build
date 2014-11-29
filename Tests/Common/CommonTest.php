@@ -19,7 +19,6 @@ class CommonTest extends \BuildFileTest {
     $dir = $this->getProject()->getProperty('project.dir.behat');
     $this->assertFileExists($dir . '/behat.local.yml');
     $this->assertFileExists($dir . '/behat.yml');
-    $this->assertFileExists($dir .'/bootstrap/FeatureContext.php');
     $this->assertStringEqualsFile($dir . '/.gitignore', 'behat.local.yml');
   }
 
@@ -33,11 +32,9 @@ class CommonTest extends \BuildFileTest {
     mkdir($dir . '/features');
     mkdir($dir . '/bootstrap');
     file_put_contents($dir .'/features/test.feature', 'test');
-    file_put_contents($dir .'/bootstrap/FeatureContext.php', 'test');
     $this->executeTarget('setup:behat');
     $this->assertStringEqualsFile($dir . '/.gitignore', 'test');
     $this->assertStringEqualsFile($dir . '/features/test.feature', 'test');
-    $this->assertStringEqualsFile($dir . '/bootstrap/FeatureContext.php', 'test');
   }
 
 

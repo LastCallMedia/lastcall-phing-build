@@ -37,6 +37,11 @@ class BehatTask extends ExecWrapperTask {
   protected $nocolors;
 
   /**
+   * @var bool Whether to use the --init flag.
+   */
+  protected $init;
+
+  /**
    * @var string  Definitions to print out.
    */
   protected $definitions;
@@ -51,7 +56,10 @@ class BehatTask extends ExecWrapperTask {
     }
   }
 
-  public function setConfig(\PhingFile $config) {
+  public function setConfig($config) {
+    if($config) {
+      $config = new \PhingFile($config);
+    }
     $this->config = $config;
   }
 
@@ -71,12 +79,12 @@ class BehatTask extends ExecWrapperTask {
     $this->nocolors = (bool) $nocolors;
   }
 
-  public function setOutput(\PhingFile $file) {
-    $this->output = $file;
-  }
-
   public function setDefinitions($definitions) {
     $this->definitions = $definitions;
+  }
+
+  public function setInit($init) {
+    $this->init = (bool) $init;
   }
 
 
@@ -106,9 +114,8 @@ class BehatTask extends ExecWrapperTask {
     if($this->definitions) {
       $exec->createArg()->setValue('--definitions=' . $this->definitions);
     }
-
-    if($this->output) {
-      $exec->setOutput($this->output);
+    if($this->init) {
+      $exec->createArg()->setValue('--init');
     }
 
     if($this->nocolors) {

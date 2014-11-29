@@ -53,7 +53,7 @@ abstract class ExecWrapperTask extends \Task {
   /**
    * @param \PhingFile $dir
    */
-  public function setDir($dir) {
+  public function setDir(\PhingFile $dir) {
     $this->execTask->setDir($dir);
   }
 
