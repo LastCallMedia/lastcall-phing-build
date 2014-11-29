@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="lcm-phing-behat-tests" default="testGlobal">
-    <taskdef name="behat" classname="lastcall\Phing\Behat\BehatTask" />
+    <taskdef name="behat" classname="lastcall\phing\Behat\BehatTask" />
     <property name="behat.executable" value="globalexecutable"/>
     <property name="behat.config" value="globalconfig"/>
 

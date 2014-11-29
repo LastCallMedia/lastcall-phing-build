@@ -1,15 +1,5 @@
 <?xml version="1.0"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="./Tests/bootstrap.php"
-         colors="false"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         syntaxCheck="false"
-         verbose="true"
-         strict="false">
+<phpunit bootstrap="./Tests/bootstrap.php">
     <testsuites>
         <testsuite name="AllTests">
             <directory>Tests/</directory>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="lcm-phing-drush-global-tests" default="testGlobal">
-    <taskdef name="drush" classname="lastcall\Phing\Drush\DrushTask" />
+    <taskdef name="drush" classname="lastcall\phing\Drush\DrushTask" />
     <property name="drush.alias" value="globalalias"/>
     <property name="drush.executable" value="globalexecutable"/>
     <property name="drush.uri" value="globaluri"/>

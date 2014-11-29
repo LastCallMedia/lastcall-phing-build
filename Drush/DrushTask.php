@@ -1,8 +1,8 @@
 <?php
 
-namespace lastcall\Phing\Drush;
+namespace lastcall\phing\Drush;
 
-use lastcall\Phing\Phing\ExecWrapperTask;
+use lastcall\phing\Phing\ExecWrapperTask;
 
 class DrushTask extends ExecWrapperTask {
 

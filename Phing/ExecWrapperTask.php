@@ -1,6 +1,6 @@
 <?php
 
-namespace lastcall\Phing\Phing;
+namespace lastcall\phing\Phing;
 
 use Target;
 

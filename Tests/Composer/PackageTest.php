@@ -1,6 +1,6 @@
 <?php
 
-namespace lastcall\Phing\Tests\Common;
+namespace lastcall\phing\Tests\Composer;
 
 use Composer\IO\NullIO;
 use Composer\Util\ConfigValidator;

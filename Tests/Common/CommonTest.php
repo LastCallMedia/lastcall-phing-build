@@ -1,7 +1,7 @@
 <?php
 
 
-namespace lastcall\Phing\Tests\Common;
+namespace lastcall\phing\Tests\Common;
 
 class CommonTest extends \BuildFileTest {
 

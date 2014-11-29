@@ -1,8 +1,8 @@
 <?php
 
-namespace lastcall\Phing\Tests\Drush;
+namespace lastcall\phing\Tests\Drush;
 
-use lastcall\Phing\Tests\Phing\BaseTaskTest;
+use lastcall\phing\Tests\Phing\BaseTaskTest;
 
 class DrushTaskGlobalTest extends BaseTaskTest {
 

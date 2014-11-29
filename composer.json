@@ -24,6 +24,6 @@
       "sebastian/phpcpd": "PHP Duplicate code analyzer"
     },
     "autoload": {
-      "psr-4": { "lastcall\\Phing\\": "" }
+      "psr-4": { "lastcall\\phing\\": "" }
     }
 }
