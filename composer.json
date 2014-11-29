@@ -13,10 +13,10 @@
     "suggest": {
       "drupal/drupal-extension" : "Behat BDD extensions for Drupal",
       "squizlabs/php_codesniffer": "Checks coding standards",
-      "drupal/coder": "Contains Code Sniffer definitions for Drupal"
+      "drupal/coder": "Contains Code Sniffer definitions for Drupal",
       "phpmd/phpmd": "PHP Mess Detector",
       "phploc/phploc": "PHP Lines of Code analyzer.",
-      "sebastian/phpcpd": "PHP Duplicate code analyzer",
+      "sebastian/phpcpd": "PHP Duplicate code analyzer"
     },
     "autoload": {
       "psr-4": { "lastcall\\Phing\\": "" }
