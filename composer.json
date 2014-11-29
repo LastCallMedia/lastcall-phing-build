@@ -1,8 +1,13 @@
 {
-    "name": "lastcall/Phing",
+    "name": "lastcall/phing",
     "description": "Phing customizations for Last Call Media",
+    "license": "GPL-2.0+",
     "require": {
         "phing/phing": "2.*"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "@stable",
+      "composer/composer": "1.0.*@dev"
     },
     "authors": [
         {
