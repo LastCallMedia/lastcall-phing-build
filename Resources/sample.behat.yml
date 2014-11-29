@@ -1,0 +1,20 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      zombie: ~
+    Drupal\DrupalExtension:
+      blackbox: ~
+      drush: ~
+
+imports:
+  - behat.local.yml
