@@ -3,7 +3,6 @@
 <project name="common" default="dummy">
     <taskdef name="drush" classname="Stubs.DrushTask" classpath="${phing.dir.common}"/>
     <taskdef name="behat" classname="Stubs.BehatTask" classpath="${phing.dir.common}"/>
-    <property name="project.dir.artifacts" value="./artifacts"/>
 
     <target name="dummy">
         <echo msg="This task should never be called."/>
@@ -33,18 +32,87 @@
         <echo msg="Finished creating behat directory at ${phing.dir.behat}"/>
     </target>
 
-    <target name="setup:artifacts">
+    <target name="setup:artifacts" unless="setup:artifacts.done" description="Prepare the test result archive directory">
         <mkdir dir="${project.dir.artifacts}"/>
+        <property name="setup:artifacts.done" value="true"/>
     </target>
 
-    <target name="test:phpcodesniffer">
+    <target name="test:all" description="Run all tests and output to screen.">
+        <phingcall target="test:behat"/>
+        <phingcall target="test:phpcs"/>
+        <phingcall target="test:phpmd"/>
+        <phingcall target="test:phploc"/>
+        <phingcall target="test:phpcpd"/>
+    </target>
+
+    <target name="test:all:report" description="Run all tests and generate reports to the artifacts directory.">
+        <phingcall target="test:behat:report"/>
+        <phingcall target="test:phpcs:report"/>
+        <phingcall target="test:phpmd:report"/>
+        <phingcall target="test:phploc:report"/>
+        <phingcall target="test:phpcpd:report"/>
+    </target>
+
+    <target name="test:behat" description="Run Behat tests for the site.">
+        <behat checkreturn="true" passthru="true"/>
+    </target>
+
+    <!-- WARNING: Tests below are in Beta.  They might not be helpful. -->
+    <target name="test:phpcs" description="Detects code style issues and generates a report.">
         <!-- Requires adding drupal/coder: ~7.0 to composer.json -->
-        <phpcodesniffer standard="vendor/drupal/coder/coder_sniffer/Drupal">
+        <phpcodesniffer standard="${phing.dir.common}/../../drupal/coder/coder_sniffer/Drupal">
             <fileset refid="custom_code"/>
         </phpcodesniffer>
     </target>
 
-    <target name="test:behat">
-        <behat checkreturn="true" passthru="true"/>
+    <target name="test:phpmd" description="Detects common issues with code and generates a report.">
+        <phpmd rulesets="codesize,naming,design">
+            <fileset refid="custom_code"/>
+        </phpmd>
     </target>
+
+    <target name="test:phploc" description="Generates overall code statistics and generates a report.">
+        <phploc suffixes="php,module,inc">
+            <fileset refid="custom_code"/>
+        </phploc>
+    </target>
+
+    <target name="test:phpcpd" description="Detects duplicate code and generates a report.">
+        <phpcpd>
+            <fileset refid="custom_code"/>
+        </phpcpd>
+    </target>
+
+    <!-- Reporting targets: -->
+    <target name="test:behat:report" depends="setup:artifacts">
+        <behat out="${project.dir.artifacts}/behat.xml" checkreturn="true" format="pretty" nocolors="true"/>
+    </target>
+
+    <target name="test:phpcs:report">
+        <phpcodesniffer standard="${phing.dir.common}/../../drupal/coder/coder_sniffer/Drupal">
+            <fileset refid="custom_code"/>
+            <formatter type="checkstyle" usefile="true" outfile="${project.dir.artifacts}/checkstyle.xml"/>
+        </phpcodesniffer>
+    </target>
+
+    <target name="test:phpmd:report" depends="setup:artifacts" description="Detects common issues with code and generates a report.">
+        <phpmd rulesets="codesize,naming,design">
+            <fileset refid="custom_code"/>
+            <formatter outfile="${project.dir.artifacts}/phpmd.xml" type="xml"/>
+        </phpmd>
+    </target>
+
+    <target name="test:phploc:report" depends="setup:artifacts" description="Generates overall code statistics and generates a report.">
+        <phploc suffixes="php,module,inc" reportDirectory="${project.dir.artifacts}" reportName="phploc" reportType="xml">
+            <fileset refid="custom_code"/>
+        </phploc>
+    </target>
+
+    <target name="test:phpcpd:report" depends="setup:artifacts" description="Detects duplicate code and generates a report.">
+        <phpcpd>
+            <fileset refid="custom_code"/>
+            <formatter outfile="${project.dir.artifacts}/pmd-cpd.xml" type="pmd"/>
+        </phpcpd>
+    </target>
+
 </project>
