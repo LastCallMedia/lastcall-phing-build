@@ -23,7 +23,7 @@ abstract class ExecWrapperTask extends \Task {
   protected $dir;
 
   public function __construct() {
-    $this->execTask = new \ExecTask();
+    $this->execTask = new EnhancedExecTask();
     $this->execTask->setExecutable(new \PhingFile($this->executable));
   }
 
@@ -97,6 +97,9 @@ abstract class ExecWrapperTask extends \Task {
     return $this->getExecTask()->main();
   }
 
+  /**
+   * @return \ExecTask
+   */
   public function getExecTask() {
     return $this->configureExecTask(clone $this->execTask);
   }
