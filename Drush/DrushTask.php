@@ -56,21 +56,24 @@ class DrushTask extends ExecWrapperTask {
    */
   protected $no;
 
+  protected $args = array();
+
   /**
    * Initialize global properties.
    */
   public function init() {
+    parent::init();
     if($executable = $this->getProject()->getProperty('drush.executable')) {
-      $this->executable = $executable;
+      $this->setExecutable($executable);
     }
     if($alias = $this->getProject()->getProperty('drush.alias')) {
-      $this->alias = $alias;
+      $this->setAlias($alias);
     }
     if($root = $this->getProject()->getProperty('drush.root')) {
-      $this->root = $root;
+      $this->setRoot($root);
     }
     if($uri = $this->getProject()->getProperty('drush.uri')) {
-      $this->uri = $uri;
+      $this->setUri($uri);
     }
   }
 
@@ -79,6 +82,13 @@ class DrushTask extends ExecWrapperTask {
    */
   public function setCommand($command) {
     $this->command = $command;
+  }
+
+  /**
+   * @param string $arg
+   */
+  public function createArg() {
+    return $this->args[] = new DrushArg();
   }
 
   /**
@@ -143,6 +153,11 @@ class DrushTask extends ExecWrapperTask {
     }
     if($this->command) {
       $exec->createArg()->setValue($this->command);
+    }
+    if($this->args) {
+      foreach($this->args as $arg) {
+        $exec->createArg()->setValue($arg);
+      }
     }
     if($this->root) {
       $exec->createArg()->setValue('--root=' . $this->root);

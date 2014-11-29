@@ -12,96 +12,95 @@ abstract class ExecWrapperTask extends \Task {
   protected $executable;
 
   /**
-   * @var bool
+   * @var \ExecTask
    */
-  protected $passthru;
+  protected $execTask;
 
-  /**
-   * @var \PhingFile
-   */
-  protected $output;
-
-  /**
-   * @var bool
-   */
-  protected $checkReturn;
-
-  /**
-   * @var string
-   */
-  protected $outputProperty;
 
   /**
    * @var \PhingFile
    */
   protected $dir;
 
+  public function __construct() {
+    $this->execTask = new \ExecTask();
+    $this->execTask->setExecutable($this->executable);
+  }
+
+  public function setProject(\Project $project){
+    parent::setProject($project);
+    $this->execTask->setProject($project);
+  }
+
+  public function setOwningTarget(\Target $target) {
+    parent::setOwningTarget($target);
+    $this->execTask->setOwningTarget($target);
+  }
+
+  public function init() {
+    parent::init();
+    $this->execTask->setExecutable($this->executable);
+    $this->execTask->init();
+  }
+
   /**
-   * @param boolean $checkReturn
+   * @param boolean $checkreturn
    */
-  public function setCheckReturn($checkReturn) {
-    $this->checkReturn = $checkReturn;
+  public function setCheckreturn($checkreturn) {
+    $this->execTask->setCheckreturn($checkreturn);
   }
 
   /**
    * @param \PhingFile $dir
    */
   public function setDir($dir) {
-    $this->dir = $dir;
+    $this->execTask->setDir($dir);
   }
 
   /**
    * @param string $executable
    */
   public function setExecutable($executable) {
-    $this->executable = $executable;
+    $this->execTask->setExecutable($executable);
   }
 
   /**
    * @param \PhingFile $output
    */
-  public function setOutput($output) {
-    $this->output = $output;
+  public function setOutput(\PhingFile $output) {
+    $this->execTask->setOutput($output);
   }
 
   /**
    * @param string $outputProperty
    */
-  public function setOutputProperty($outputProperty) {
-    $this->outputProperty = $outputProperty;
+  public function setOutputProperty($prop) {
+    $this->execTask->setOutputProperty($prop);
   }
 
   /**
    * @param boolean $passthru
    */
   public function setPassthru($passthru) {
-    $this->passthru = $passthru;
+    $this->execTask->setPassthru($passthru);
   }
 
+  public function setReturnProperty($prop) {
+    $this->execTask->setReturnProperty($prop);
+  }
+
+  public function maybeConfigure() {
+    parent::maybeConfigure();
+    $this->execTask->maybeConfigure();
+  }
 
   public function main() {
-    $exec = $this->getExecTask();
-
-    return $exec->main();
+    return $this->getExecTask()->main();
   }
 
   public function getExecTask() {
-    $exec = new \ExecTask();
-    $exec->setProject($this->getProject());
-    $exec->init();
-
-    $exec->setExecutable($this->executable);
-    $exec->setPassthru($this->passthru);
-    if($this->output) {
-      $exec->setOutput($this->output);
-    }
-    $exec->setCheckreturn($this->checkReturn);
-    $exec->setOutputProperty($this->outputProperty);
-    if($this->dir) {
-      $exec->setDir($this->dir);
-    }
-
-    return $this->configureExecTask($exec);
+//    $task = clone $this->execTask;
+    return $this->configureExecTask(clone $this->execTask);
   }
 
   abstract protected function configureExecTask(\ExecTask $exec);

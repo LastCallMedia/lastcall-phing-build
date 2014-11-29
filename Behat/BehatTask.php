@@ -42,6 +42,7 @@ class BehatTask extends ExecWrapperTask {
   protected $definitions;
 
   public function init() {
+    parent::init();
     if($executable = $this->getProject()->getProperty('behat.executable')) {
       $this->setExecutable($executable);
     }

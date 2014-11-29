@@ -2,6 +2,7 @@
 
 namespace lastcall\Phing\Tests\Behat;
 
+use lastcall\Phing\Behat\BehatTask;
 use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
 class BehatTaskTest extends BaseTaskTest {

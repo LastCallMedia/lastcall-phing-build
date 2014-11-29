@@ -8,26 +8,26 @@
         <behat executable="bin/behat"/>
     </target>
 
-    <target name="testPassthru" description="bin/behat">
-        <behat executable="bin/behat" passthru="true"/>
+    <target name="testPassthru" description="behat">
+        <behat executable="behat" passthru="true"/>
     </target>
 
-    <target name="testConfig" description="bin/behat --config [[behat.yml]] 2>&amp;1">
-        <behat executable="bin/behat" config="behat.yml"/>
+    <target name="testConfig" description="behat --config [[behat.yml]] 2>&amp;1">
+        <behat executable="behat" config="behat.yml"/>
     </target>
 
-    <target name="testFormat" description="bin/behat --format=pretty 2>&amp;1">
-        <behat executable="bin/behat" format="pretty"/>
+    <target name="testFormat" description="behat --format=pretty 2>&amp;1">
+        <behat executable="behat" format="pretty"/>
     </target>
 
-    <target name="testOut" description="bin/behat --out=test.log --no-colors 2>&amp;1">
-        <behat executable="bin/behat" out="test.log"/>
+    <target name="testOut" description="behat --out=test.log --no-colors 2>&amp;1">
+        <behat executable="behat" out="test.log"/>
     </target>
 
-    <target name="testProfile" description="bin/behat --profile=test 2>&amp;1">
-        <behat executable="bin/behat" profile="test"/>
+    <target name="testProfile" description="behat --profile=test 2>&amp;1">
+        <behat executable="behat" profile="test"/>
     </target>
-    <target name="testNoColors" description="bin/behat --no-colors 2>&amp;1">
-        <behat executable="bin/behat" nocolors="true"/>
+    <target name="testNoColors" description="behat --no-colors 2>&amp;1">
+        <behat nocolors="true"/>
     </target>
 </project>

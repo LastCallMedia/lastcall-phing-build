@@ -38,4 +38,15 @@
     <target name="testDebug" description="drush --debug 2>&amp;1">
         <drush debug="true"/>
     </target>
+
+    <target name="testArgs" description="drush sql-query 'SHOW TABLES' 2>&amp;1">
+        <drush command="sql-query">
+            <arg>SHOW TABLES</arg>
+        </drush>
+    </target>
+
+    <!--<target name="testReturnProperty" description="drush status 2>&amp;1">-->
+        <!--<drush returnProperty="myRetSuccess" command="status"/>-->
+        <!--<drush returnProperty="myRetFail" command="jlijl"/>-->
+    <!--</target>-->
 </project>

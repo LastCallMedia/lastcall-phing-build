@@ -3,19 +3,15 @@
 <project name="common" default="dummy">
     <taskdef name="drush" classname="Stubs.DrushTask" classpath="${phing.dir.common}"/>
     <taskdef name="behat" classname="Stubs.BehatTask" classpath="${phing.dir.common}"/>
-
-    <!--<property name="project.dir.behat" value="${project.basedir}/../sites/all/behat"/>-->
-    <tstamp>
-        <format pattern="%Y-%m-%d-%H%M-%S" property="build.time"/>
-    </tstamp>
+    <property name="project.dir.artifacts" value="./artifacts"/>
 
     <target name="dummy">
         <echo msg="This task should never be called."/>
     </target>
 
     <target name="drupal-ensure-install">
-        <drush command="sql-query" returnProperty="tableStatus" haltOnError="false">
-            <param>"SHOW TABLES"</param>
+        <drush command="sql-query" returnProperty="tableStatus" checkreturn="false">
+            <arg>SHOW TABLES</arg>
         </drush>
         <if>
             <not>
@@ -38,8 +34,18 @@
         <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
     </target>
 
-    <target name="test:behat">
-        <behat executable="${behat.bin}" config="${project.dir.behat}/behat.yml" passthru="true" />
+    <target name="setup:artifacts">
+        <mkdir dir="${project.dir.artifacts}"/>
     </target>
 
+    <target name="test:phpcodesniffer">
+        <!-- Requires adding drupal/coder: ~7.0 to composer.json -->
+        <phpcodesniffer standard="vendor/drupal/coder/coder_sniffer/Drupal">
+            <fileset refid="custom_code"/>
+        </phpcodesniffer>
+    </target>
+
+    <target name="test:behat">
+        <behat checkreturn="true" passthru="true"/>
+    </target>
 </project>
