@@ -29,7 +29,7 @@
         <copy file="${phing.dir.common}/Resources/sample.behat.yml" tofile="${project.dir.behat}/behat.yml"/>
         <copy file="${phing.dir.common}/Resources/sample.behat.local.yml" tofile="${project.dir.behat}/behat.local.yml"/>
         <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
-        <echo msg="Finished creating behat directory at ${phing.dir.behat}"/>
+        <echo msg="Finished creating behat directory at ${project.dir.behat}"/>
     </target>
 
     <target name="setup:artifacts" unless="setup:artifacts.done" description="Prepare the test result archive directory">
