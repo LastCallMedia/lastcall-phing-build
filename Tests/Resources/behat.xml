@@ -2,7 +2,7 @@
 
 <project name="lcm-phing-behat-tests" default="testExecutable">
     <!--http://blog.riff.org/2014_02_15_tip_of_the_day_phing_composer_and_namespaced_task_classes-->
-    <taskdef name="behat" classname="lastcall\phing\Behat\BehatTask" />
+    <taskdef name="behat" classname="lastcall\Phing\Behat\BehatTask" />
 
     <target name="testExecutable" description="bin/behat 2>&amp;1">
         <behat executable="bin/behat"/>

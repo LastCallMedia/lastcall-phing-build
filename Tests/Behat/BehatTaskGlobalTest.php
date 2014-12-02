@@ -1,8 +1,8 @@
 <?php
 
-namespace lastcall\phing\Tests\Behat;
+namespace lastcall\Phing\Tests\Behat;
 
-use lastcall\phing\Tests\Phing\BaseTaskTest;
+use lastcall\Phing\Tests\Phing\BaseTaskTest;
 
 class BehatTaskGlobalTest extends BaseTaskTest {
 

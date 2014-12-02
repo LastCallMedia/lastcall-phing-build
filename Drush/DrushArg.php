@@ -1,6 +1,6 @@
 <?php
 
-namespace lastcall\phing\Drush;
+namespace lastcall\Phing\Drush;
 
 
 class DrushArg {

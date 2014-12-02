@@ -24,6 +24,9 @@
       "sebastian/phpcpd": "PHP Duplicate code analyzer"
     },
     "autoload": {
-      "psr-4": { "lastcall\\phing\\": "" }
+      "psr-4": { "lastcall\\Phing\\": "" }
+    },
+    "scripts": {
+      "phpunit": "vendor/bin/phpunit"
     }
 }

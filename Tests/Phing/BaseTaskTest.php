@@ -1,8 +1,8 @@
 <?php
 
-namespace lastcall\phing\Tests\Phing;
+namespace lastcall\Phing\Tests\Phing;
 
-use lastcall\phing\Phing\ExecWrapperTask;
+use lastcall\Phing\Phing\ExecWrapperTask;
 
 abstract class BaseTaskTest extends \BuildFileTest {
 

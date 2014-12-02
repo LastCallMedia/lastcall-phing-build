@@ -1,8 +1,8 @@
 <?php
 
-namespace lastcall\phing\Behat;
+namespace lastcall\Phing\Behat;
 
-use lastcall\phing\Phing\ExecWrapperTask;
+use lastcall\Phing\Phing\ExecWrapperTask;
 
 class BehatTask extends ExecWrapperTask {
 

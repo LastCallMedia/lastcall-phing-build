@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="lcm-phing-drush-tests" default="testCommand">
-    <taskdef name="drush" classname="lastcall\phing\Drush\DrushTask" />
+    <taskdef name="drush" classname="lastcall\Phing\Drush\DrushTask" />
 
     <target name="testCommand" description="drush status 2>&amp;1">
         <drush command="status" />
