@@ -37,3 +37,7 @@ Tips
 ```
 * You can add any composer libraries you'd like to the composer.json.  Commit the composer.json and the composer.lock to the repository, but not the vendor/ code.
 * This repository and the Last Call Behat repository will be updated frequently, so run composer update as often as you can.
+
+Issues & Changes
+----------------
+Please use the [Github issue tracker](https://github.com/LastCallMedia/lastcall-phing-build/issues/new) to report bugs for this project.  Please [create pull requests](https://github.com/LastCallMedia/lastcall-phing-build/compare) to submit fixes to this repository.  Always make sure your changes are adequately covered by tests.
