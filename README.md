@@ -57,3 +57,4 @@ Tips
 Issues & Changes
 ----------------
 Please use the [Github issue tracker](https://github.com/LastCallMedia/lastcall-phing-build/issues/new) to report bugs for this project.  Please [create pull requests](https://github.com/LastCallMedia/lastcall-phing-build/compare) to submit fixes to this repository.  Always make sure your changes are adequately covered by tests.
+
