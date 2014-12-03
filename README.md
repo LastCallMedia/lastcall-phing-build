@@ -17,17 +17,23 @@ Setup
 Continuous Integration
 ----------------------
 In CI environments, the ci-build target will be invoked with the following command:
+```
     cd build && composer install
     vendor/bin/phing ci-build
+```
 Whatever is inside your ci-build target will be run.  This means you can add steps to the build by adding tasks inside of the ci-build target.  Having a task "fail" inside of the ci-build target will fail the entire build, so your tasks should be set up to check return codes.  For example:
+```
     <drush command="updatedb" yes="true" checkreturn="true"/>
+```
 In this task, setting "checkreturn" to true means that if this command does not complete successfully, it will fail the build.
 
 Tips
 ----
 * You can add composer script aliases to the build/composer.json file.  For example, the following command will allow you to run `composer behat`:
+```
     "scripts": {
         "behat": "vendor/bin/behat -c ../sites/all/behat/behat.yml"
     }
+```
 * You can add any composer libraries you'd like to the composer.json.  Commit the composer.json and the composer.lock to the repository, but not the vendor/ code.
 * This repository and the Last Call Behat repository will be updated frequently, so run composer update as often as you can.
