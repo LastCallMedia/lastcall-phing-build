@@ -38,15 +38,16 @@ Tips
 * You can add any composer libraries you'd like to the composer.json.  Commit the composer.json and the composer.lock to the repository, but not the vendor/ code.
 * This project and the Last Call Behat project will be updated frequently, so run composer update as often as you can.
 * This project uses [Semantic Versioning](http://semver.org/).  Using bounded version constraints in your composer.json is strongly encouraged to prevent pulling in changes that break backward compatibility.  For example, this declaration in your composer.json will keep you on the latest stable release of the 1.x branch, which should never break backwards compatibility:
-```
+    ```
     "lastcall/phing": "~1.0",
-```
-While using any of the following declarations may cause backwards-incompatible changes to be pulled in when a 2.0 release is created:
-```
+    ```
+    
+    While using any of the following declarations may cause backwards-incompatible changes to be pulled in when a 2.0 release is created:
+    ```
     "lastcall/phing": "*",
     "lastcall/phing": "dev-master",
-```
-For more detailed information on Composer version constraints, see [the Composer documentation](https://getcomposer.org/doc/01-basic-usage.md#package-versions)
+    ```
+    For more detailed information on Composer version constraints, see [the Composer documentation](https://getcomposer.org/doc/01-basic-usage.md#package-versions)
 
 Issues & Changes
 ----------------
