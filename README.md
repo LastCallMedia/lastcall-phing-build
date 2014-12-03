@@ -7,7 +7,11 @@ The purpose of this project is to aid in the automation of testing and code qual
 
 Setup
 -----
-1. From the project root, run the following command: `curl https://raw.githubusercontent.com/LastCallMedia/lastcall-phing-build/master/project-setup.sh | sh`
+1. From the project root, run the following command: 
+    ```
+    curl https://raw.githubusercontent.com/LastCallMedia/lastcall-phing-build/master/project-setup.sh | sh
+    ```
+
 1. Edit the new build file that has been placed in build/build.xml, and change the parameters to fit your project.
 1. When you are ready to setup Behat testing, run `vendor/bin/phing setup:behat`.  This will setup a behat directory at the location you have specified in build.xml.
 1. Edit your behat.local.yml and set the base_url parameter to the correct URL for the local environment.
@@ -30,11 +34,12 @@ In this task, setting "checkreturn" to true means that if this command does not 
 Tips
 ----
 * You can add composer script aliases to the build/composer.json file.  For example, the following command will allow you to run `composer behat`:
-```
+    ```
     "scripts": {
         "behat": "vendor/bin/behat -c ../sites/all/behat/behat.yml"
     }
-```
+    ```
+    
 * You can add any composer libraries you'd like to the composer.json.  Commit the composer.json and the composer.lock to the repository, but not the vendor/ code.
 * This project and the Last Call Behat project will be updated frequently, so run composer update as often as you can.
 * This project uses [Semantic Versioning](http://semver.org/).  Using bounded version constraints in your composer.json is strongly encouraged to prevent pulling in changes that break backward compatibility.  For example, this declaration in your composer.json will keep you on the latest stable release of the 1.x branch, which should never break backwards compatibility:
