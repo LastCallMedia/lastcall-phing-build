@@ -14,7 +14,10 @@ default:
       zombie: ~
     Drupal\DrupalExtension:
       blackbox: ~
-      drush: ~
+      # Uncomment to enable drush (requires drupal_root in behat.local.yml)
+      #drush: ~
+      # Uncomment to enable drupal API's (requires drupal_root in behat.local.yml)
+      #drupal: ~
 
 imports:
   - behat.local.yml
