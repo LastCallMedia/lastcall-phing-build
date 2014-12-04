@@ -39,6 +39,7 @@ cat << "EOF" > build.xml
 
         <!-- Exclude generated code: -->
         <exclude name="**.views_default.inc"/>
+        <exclude name="**.pages_default.inc"/>
         <exclude name="**.strongarm.inc"/>
         <exclude name="**.feeds_importer_default.inc"/>
         <exclude name="**.field_group.inc"/>
