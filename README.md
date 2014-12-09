@@ -13,10 +13,10 @@ Setup
     ```
 
 1. Edit the new build file that has been placed in build/build.xml, and change the parameters to fit your project.
-1. When you are ready to setup Behat testing, run `build/vendor/bin/phing setup:behat`.  This will setup a behat directory at the location you have specified in build.xml. By default, the behat directory will be set up in sites/default.
-1. Edit your behat.local.yml and set the base_url parameter to the correct URL for the local environment.
-1. Run vendor/bin/phing test:behat to run Behat tests.
-1. Run vendor/bin/phing ci-build to do a full "CI Build" as configured in your build.xml.
+1. When you are ready to setup Behat testing, run `build/vendor/bin/phing setup:behat`. This will setup a behat directory at the location you have specified in build.xml. By default, the behat directory will be set up in sites/default.
+1. From the newly created behat directory, edit your behat.local.yml and set the base_url parameter to the correct URL for the local environment.
+1. Run build/vendor/bin/phing test:behat to run Behat tests.
+1. Run build/vendor/bin/phing ci-build to do a full "CI Build" as configured in your build.xml.
 
 Continuous Integration
 ----------------------
