@@ -25,10 +25,13 @@
 
     <target name="setup:behat">
         <mkdir dir="${project.dir.behat}"/>
+        <mkdir dir="${project.dir.behat}/features"/>
+        <mkdir dir="${project.dir.behat}/features/bootstrap"/>
         <behat dir="${project.dir.behat}" init="true" config="false"/>
         <copy file="${phing.dir.common}/Resources/sample.behat.yml" tofile="${project.dir.behat}/behat.yml"/>
         <copy file="${phing.dir.common}/Resources/sample.behat.local.yml" tofile="${project.dir.behat}/behat.local.yml"/>
         <copy file="${phing.dir.common}/Resources/sample.gitignore" tofile="${project.dir.behat}/.gitignore"/>
+        <copy file="${phing.dir.common}/Resources/FeatureContext.sample.php" tofile="${project.dir.behat}/features/bootstrap/FeatureContext.php"/>
         <echo msg="Finished creating behat directory at ${project.dir.behat}"/>
     </target>
 

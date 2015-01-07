@@ -20,6 +20,7 @@ class CommonTest extends \BuildFileTest {
     $this->assertFileExists($dir . '/behat.local.yml');
     $this->assertFileExists($dir . '/behat.yml');
     $this->assertStringEqualsFile($dir . '/.gitignore', 'behat.local.yml');
+    $this->assertFileExists($dir . '/features/bootstrap/FeatureContext.php');
   }
 
   /**

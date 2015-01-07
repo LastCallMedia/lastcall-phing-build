@@ -6,7 +6,9 @@
 #default:
 #  extensions:
 #    Behat\MinkExtension:
-#      base_url: 'http://localhost/rfa'
+#      base_url: 'http://localhost/PROJECT'
 #    Drupal\DrupalExtension:
+#      drupal:
+#        drupal_root: /var/www/PROJECT
 #      drush:
 #        alias: self
