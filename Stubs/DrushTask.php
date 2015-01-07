@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ .'/../Phing/EnhancedExecTask.php';
 require_once __DIR__ .'/../Phing/ExecWrapperTask.php';
 require_once __DIR__ . '/../Drush/DrushTask.php';
 require_once __DIR__ . '/../Drush/DrushArg.php';
