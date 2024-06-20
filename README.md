@@ -3,7 +3,7 @@ Last Call Media Phing Build System
 
 [![Build Status](https://travis-ci.org/LastCallMedia/lastcall-phing-build.svg?branch=master)](https://travis-ci.org/LastCallMedia/lastcall-phing-build)
 
-The purpose of this project is to aid in the automation of testing and code quality tools for Last Call Media's web projects.  It is intended to be run either locally or in a CI environment, and it contains Phing tasks for some common operations.  [Phing documentation](http://www.phing.info/trac/wiki/Users/Documentation)
+Last Call Media Phing Build System is brought to you by your friends at [Last Call Media](https://www.lastcallmedia.com). The purpose of this project is to aid in the automation of testing and code quality tools for Last Call Media's web projects.  It is intended to be run either locally or in a CI environment, and it contains Phing tasks for some common operations.  [Phing documentation](http://www.phing.info/trac/wiki/Users/Documentation)
 
 Setup
 -----
